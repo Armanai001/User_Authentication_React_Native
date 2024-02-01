@@ -1,5 +1,5 @@
 import AuthContent from '..//components/Auth/AuthContent';
-import {ScrollView} from "react-native";
+import {Alert, ScrollView} from "react-native";
 import {useState} from "react";
 import {signInInterface} from "../constants/Types";
 import {loginUser} from "../Main/auth";
@@ -10,7 +10,11 @@ function LoginScreen() {
 
     const signIn = async ({email, password}: signInInterface) => {
         setAuthenticating(true)
-        await loginUser(email, password)
+        try {
+            await loginUser(email, password)
+        } catch (error) {
+            Alert.alert('Authentication failed', 'Please check your credentials')
+        }
         setAuthenticating(false)
     }
 
