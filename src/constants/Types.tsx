@@ -23,4 +23,9 @@ type invalidCredentials = {
     confirmPassword: boolean,
 }
 
-export {credentialsInterface, inputInterface, invalidCredentials}
+type signInInterface = {
+    email: string,
+    password: string,
+}
+
+export {credentialsInterface, inputInterface, invalidCredentials, signInInterface}

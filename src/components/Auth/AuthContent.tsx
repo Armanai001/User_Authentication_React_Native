@@ -4,11 +4,14 @@ import {Alert, StyleSheet, View} from 'react-native';
 import FlatButton from '../ui/FlatButton';
 import AuthForm from './AuthForm';
 import {Colors} from '../../constants/styles';
-import {credentialsInterface} from "../../constants/Types";
+import {credentialsInterface, signInInterface} from "../../constants/Types";
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
-function AuthContent({isLogin, onAuthenticate}: { isLogin: boolean, onAuthenticate: any }) {
+function AuthContent({isLogin, onAuthenticate}: {
+    isLogin: boolean,
+    onAuthenticate: ({email, password}: signInInterface) => void
+}) {
 
     const [credentialsInvalid, setCredentialsInvalid] = useState({
         email: false,
